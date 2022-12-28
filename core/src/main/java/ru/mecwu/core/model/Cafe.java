@@ -1,15 +1,9 @@
-package ru.mecwu.core.entity;
-
-import jakarta.persistence.*;
+package ru.mecwu.core.model;
 
 import java.util.Date;
 import java.util.Set;
 
-@Entity
-@Table(name = "cafe", schema = "mecwudata")
-public class CafeEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class Cafe {
     private Long id;
     private String title;
     private String email, password, description;
@@ -18,22 +12,31 @@ public class CafeEntity {
     private Set<Long> foods;
     private Set<Long> orders;
     private Set<Long> comments;
-    @Temporal(TemporalType.DATE)
     private Date createdAt;
 
-    public CafeEntity(String title, String email, String password, String description, Date createdAt) {
+    public Cafe() {
+    }
+
+    public Cafe(Long id, String title, String email, String password, String description, Set<Long> menu, Set<Long> grade, Set<Long> foods, Set<Long> orders, Set<Long> comments, Date createdAt) {
+        this.id = id;
         this.title = title;
         this.email = email;
         this.password = password;
         this.description = description;
+        this.menu = menu;
+        this.grade = grade;
+        this.foods = foods;
+        this.orders = orders;
+        this.comments = comments;
         this.createdAt = createdAt;
-    }
-
-    public CafeEntity() {
     }
 
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getTitle() {
