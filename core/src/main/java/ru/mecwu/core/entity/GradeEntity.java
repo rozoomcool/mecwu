@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 @jakarta.persistence.Entity
 @Table(name = "grade", schema = "mecwudata")
-public class Entity {
+public class GradeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

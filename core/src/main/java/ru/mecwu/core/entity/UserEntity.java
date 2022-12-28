@@ -6,9 +6,10 @@ import ru.mecwu.core.model.Role;
 import ru.mecwu.core.model.Status;
 
 import java.util.Date;
+import java.util.Set;
 
 @Data
-@Entity
+@GradeEntity
 @Table(name = "user", schema = "mecwudata")
 public class UserEntity {
     @Id
@@ -17,8 +18,8 @@ public class UserEntity {
     private String nickname;
     private String email;
     private String password;
-    private Long commentId;
-    private Long gradeId;
+    private Set<Long> comments;
+    private Set<Long> grades;
     @Enumerated(EnumType.STRING)
     private Role role;
     @Enumerated(EnumType.STRING)

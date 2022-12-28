@@ -6,7 +6,7 @@ import lombok.Data;
 import java.util.Date;
 
 @Data
-@Entity
+@GradeEntity
 @Table(name = "comment", schema = "mecwudata")
 public class CommentEntity {
     @Id
