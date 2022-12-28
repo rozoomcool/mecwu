@@ -6,4 +6,5 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "cafe", schema = "mecwudata")
 public class Cafe {
+
 }
