@@ -26,7 +26,7 @@ public class CafeEntity {
     @Temporal(TemporalType.DATE)
     private Date createdAt;
 
-    public CafeEntity(String title, String email, String password, String description, long telephone, String location) {
+    public CafeEntity(String title, String email, String password, String description, long telephone, int deliveryTime, String location) {
         this.title = title;
         this.email = email;
         this.password = password;
@@ -34,7 +34,7 @@ public class CafeEntity {
         this.location = location;
         this.telephone = telephone;
         this.createdAt = new Date();
-        this.deliveryTime = 45;
+        this.deliveryTime = deliveryTime;
         this.role = Role.Cafe;
     }
 
@@ -52,7 +52,6 @@ public class CafeEntity {
     public void setTitle(String title) {
         this.title = title;
     }
-
 
     public String getEmail() {
         return email;

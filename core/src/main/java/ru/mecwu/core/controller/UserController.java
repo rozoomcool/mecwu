@@ -11,7 +11,7 @@ import ru.mecwu.core.service.CommentService;
 import ru.mecwu.core.service.UserService;
 
 @RestController
-@RequestMapping("/api/user")
+@RequestMapping("/mecwu/v1/user")
 public class UserController {
     @Autowired
     public UserService userService;

@@ -63,7 +63,7 @@ public class JwtTokenProvider {
     }
 
     public Authentication getAuthentication(String token){
-        UserEntity userEntity = this.userRepo.findByNickname(getNickname(token));
+        UserEntity userEntity = this.userRepo.findByNickname(getNickname(token)).get();
         List<GrantedAuthority> ar = new ArrayList<>();
         return new UsernamePasswordAuthenticationToken(userEntity, "", userEntity.getAuthorities());
     }

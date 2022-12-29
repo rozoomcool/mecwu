@@ -9,7 +9,7 @@ import ru.mecwu.core.exception.UserNotFoundException;
 import ru.mecwu.core.service.UserService;
 
 @RestController
-@RequestMapping("api/v1/cafe")
+@RequestMapping("mecwu/v1/cafe")
 public class CafeController {
     @Autowired
     public UserService userService;

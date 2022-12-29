@@ -30,7 +30,7 @@ public class CommentService {
     public void addComment(CommentEntity commentEntity, String nickname, Long cafeId) {
         commentEntity.setAuthor(nickname);
         commentEntity.setCafeId(cafeId);
-        UserEntity userEntity = userRepo.findByNickname(nickname);
+        UserEntity userEntity = userRepo.findByNickname(nickname).get();
         userEntity.addCommentId(commentEntity.getId());
         commentRepo.save(commentEntity);
         userRepo.save(userEntity);

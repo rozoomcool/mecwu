@@ -5,18 +5,20 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import ru.mecwu.core.entity.UserEntity;
 import ru.mecwu.core.exception.UserAlreadyExistException;
 import ru.mecwu.core.service.UserService;
 
 @Controller
+@RequestMapping("/mecwu/v1")
 public class RegistrationController {
 
     @Autowired
     private UserService userService;
 
-    @PostMapping("api/v1/registration")
+    @PostMapping("/registration")
     public ResponseEntity registration(@RequestBody UserEntity userEntity) {
         try{
             userService.registration(userEntity);
