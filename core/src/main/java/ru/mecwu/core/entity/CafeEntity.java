@@ -15,6 +15,7 @@ public class CafeEntity {
     private String title;
     private String email, password, description, location;
     private long telephone;
+    private int deliveryTime;
     private Set<FoodEntity> menu = new HashSet<FoodEntity>();
     private Set<GradeEntity> grade = new HashSet<GradeEntity>();
     private Set<OrderEntity> orders = new HashSet<OrderEntity>();
@@ -30,6 +31,7 @@ public class CafeEntity {
         this.location = location;
         this.telephone = telephone;
         this.createdAt = createdAt;
+        this.deliveryTime = 60;
     }
 
     public CafeEntity() {
@@ -46,6 +48,7 @@ public class CafeEntity {
     public void setTitle(String title) {
         this.title = title;
     }
+
 
     public String getEmail() {
         return email;

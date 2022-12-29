@@ -17,6 +17,7 @@ public class UserEntity {
     private String nickname;
     private String email;
     private String password;
+    @OneToMany (mappedBy="author", fetch=FetchType.EAGER)
     private Set<CommentEntity> comments = new HashSet<CommentEntity>();
     private Set<GradeEntity> grades = new HashSet<GradeEntity>();
     private int points;

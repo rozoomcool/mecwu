@@ -9,8 +9,8 @@ import ru.mecwu.core.exception.UserNotFoundException;
 import ru.mecwu.core.service.UserService;
 
 @RestController
-@RequestMapping("/user")
-public class UserController {
+@RequestMapping("/cafe")
+public class CafeController {
     @Autowired
     public UserService userService;
     @GetMapping
@@ -33,17 +33,6 @@ public class UserController {
     }
     @PostMapping("/add")
     public ResponseEntity addUser(@RequestParam UserEntity userEntity){
-        try{
-            userService.addUser(userEntity);
-            return ResponseEntity.ok("Registration successful!");
-        }catch(UserAlreadyExistException e){
-            return ResponseEntity.badRequest().body(e.getMessage());
-        } catch (Exception e){
-            return ResponseEntity.badRequest().body("ERROR!!!");
-        }
-    }
-    @PostMapping("/add")
-    public ResponseEntity addComment(@RequestParam UserEntity userEntity, @RequestParam Long authorId, @RequestParam Long cafeId){
         try{
             userService.addUser(userEntity);
             return ResponseEntity.ok("Registration successful!");

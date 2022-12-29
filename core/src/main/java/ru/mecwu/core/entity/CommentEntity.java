@@ -10,9 +10,12 @@ public class CommentEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-//    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+//    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
 //    @JoinColumn(name = "author_id", nullable = false)
+    @Column(name = "author", nullable = false)
     private String author;
+    @Column(name = "cafe_id", nullable = false)
+    private Long cafeId;
     private String comment;
     private Long gradeId;
     @Temporal(TemporalType.DATE)
@@ -38,6 +41,14 @@ public class CommentEntity {
 
     public void setAuthor(String author) {
         this.author = author;
+    }
+
+    public Long getCafeId() {
+        return cafeId;
+    }
+
+    public void setCafeId(Long cafeId) {
+        this.cafeId = cafeId;
     }
 
     public String getComment() {
