@@ -10,14 +10,16 @@ public class CommentEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String userName;
+//    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+//    @JoinColumn(name = "author_id", nullable = false)
+    private String author;
     private String comment;
     private Long gradeId;
     @Temporal(TemporalType.DATE)
     private Date createdAt;
 
     public CommentEntity(String userName, String comment, Long gradeId, Date createdAt) {
-        this.userName = userName;
+        this.author = userName;
         this.comment = comment;
         this.gradeId = gradeId;
         this.createdAt = createdAt;
@@ -30,12 +32,12 @@ public class CommentEntity {
         return id;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getAuthor() {
+        return author;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
     public String getComment() {

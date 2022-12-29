@@ -3,6 +3,7 @@ package ru.mecwu.core.entity;
 import jakarta.persistence.*;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -14,20 +15,20 @@ public class CafeEntity {
     private String title;
     private String email, password, description, location;
     private long telephone;
-    private Set<Long> menu;
-    private Set<Long> grade;
-    private Set<Long> foods;
-    private Set<Long> orders;
-    private Set<Long> comments;
+    private Set<FoodEntity> menu = new HashSet<FoodEntity>();
+    private Set<GradeEntity> grade = new HashSet<GradeEntity>();
+    private Set<OrderEntity> orders = new HashSet<OrderEntity>();
+    private Set<CommentEntity> comments = new HashSet<CommentEntity>();
     @Temporal(TemporalType.DATE)
     private Date createdAt;
 
-    public CafeEntity(String title, String email, String password, String description, String location, Date createdAt) {
+    public CafeEntity(String title, String email, String password, String description, long telephone, String location, Date createdAt) {
         this.title = title;
         this.email = email;
         this.password = password;
         this.description = description;
         this.location = location;
+        this.telephone = telephone;
         this.createdAt = createdAt;
     }
 
@@ -70,43 +71,51 @@ public class CafeEntity {
         this.description = description;
     }
 
-    public Set<Long> getMenu() {
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public long getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(long telephone) {
+        this.telephone = telephone;
+    }
+
+    public Set<FoodEntity> getMenu() {
         return menu;
     }
 
-    public void setMenu(Set<Long> menu) {
+    public void setMenu(Set<FoodEntity> menu) {
         this.menu = menu;
     }
 
-    public Set<Long> getGrade() {
+    public Set<GradeEntity> getGrade() {
         return grade;
     }
 
-    public void setGrade(Set<Long> grade) {
+    public void setGrade(Set<GradeEntity> grade) {
         this.grade = grade;
     }
 
-    public Set<Long> getFoods() {
-        return foods;
-    }
-
-    public void setFoods(Set<Long> foods) {
-        this.foods = foods;
-    }
-
-    public Set<Long> getOrders() {
+    public Set<OrderEntity> getOrders() {
         return orders;
     }
 
-    public void setOrders(Set<Long> orders) {
+    public void setOrders(Set<OrderEntity> orders) {
         this.orders = orders;
     }
 
-    public Set<Long> getComments() {
+    public Set<CommentEntity> getComments() {
         return comments;
     }
 
-    public void setComments(Set<Long> comments) {
+    public void setComments(Set<CommentEntity> comments) {
         this.comments = comments;
     }
 

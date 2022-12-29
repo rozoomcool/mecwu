@@ -5,6 +5,7 @@ import ru.mecwu.core.model.Role;
 import ru.mecwu.core.model.Status;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -16,8 +17,8 @@ public class UserEntity {
     private String nickname;
     private String email;
     private String password;
-    private Set<Long> comments;
-    private Set<Long> grades;
+    private Set<CommentEntity> comments = new HashSet<CommentEntity>();
+    private Set<GradeEntity> grades = new HashSet<GradeEntity>();
     private int points;
     @Enumerated(EnumType.STRING)
     private Role role;
@@ -26,7 +27,7 @@ public class UserEntity {
     @Temporal(TemporalType.DATE)
     private Date createdAt;
 
-    public UserEntity(String nickname, String email, String password, Set<Long> comments, Set<Long> grades, Role role, Status status, Date createdAt) {
+    public UserEntity(String nickname, String email, String password, Set<CommentEntity> comments, Set<GradeEntity> grades, Role role, Status status, Date createdAt) {
         this.nickname = nickname;
         this.email = email;
         this.password = password;
@@ -77,19 +78,19 @@ public class UserEntity {
         this.points = points;
     }
 
-    public Set<Long> getComments() {
+    public Set<CommentEntity> getComments() {
         return comments;
     }
 
-    public void setComments(Set<Long> comments) {
+    public void setComments(Set<CommentEntity> comments) {
         this.comments = comments;
     }
 
-    public Set<Long> getGrades() {
+    public Set<GradeEntity> getGrades() {
         return grades;
     }
 
-    public void setGrades(Set<Long> grades) {
+    public void setGrades(Set<GradeEntity> grades) {
         this.grades = grades;
     }
 

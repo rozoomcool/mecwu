@@ -1,19 +1,23 @@
 package ru.mecwu.core.model;
 
+import ru.mecwu.core.entity.CommentEntity;
+import ru.mecwu.core.entity.GradeEntity;
+
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 public class User {
     private Long id;
     private String nickname;
     private String email;
-    private Set<Long> comments;
-    private Set<Long> grades;
+    private Set<CommentEntity> comments = new HashSet<CommentEntity>();
+    private Set<GradeEntity> grades = new HashSet<GradeEntity>();
     private Role role;
     private Status status;
     private Date createdAt;
 
-    public User(Long id, String nickname, String email, Set<Long> comments, Set<Long> grades, Role role, Status status, Date createdAt) {
+    public User(Long id, String nickname, String email, Set<CommentEntity> comments, Set<GradeEntity> grades, Role role, Status status, Date createdAt) {
         this.id = id;
         this.nickname = nickname;
         this.email = email;
@@ -22,9 +26,6 @@ public class User {
         this.role = role;
         this.status = status;
         this.createdAt = createdAt;
-    }
-
-    public User() {
     }
 
     public Long getId() {
@@ -51,19 +52,19 @@ public class User {
         this.email = email;
     }
 
-    public Set<Long> getComments() {
+    public Set<CommentEntity> getComments() {
         return comments;
     }
 
-    public void setComments(Set<Long> comments) {
+    public void setComments(Set<CommentEntity> comments) {
         this.comments = comments;
     }
 
-    public Set<Long> getGrades() {
+    public Set<GradeEntity> getGrades() {
         return grades;
     }
 
-    public void setGrades(Set<Long> grades) {
+    public void setGrades(Set<GradeEntity> grades) {
         this.grades = grades;
     }
 

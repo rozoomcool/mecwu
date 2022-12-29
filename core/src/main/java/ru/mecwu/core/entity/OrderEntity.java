@@ -14,7 +14,7 @@ public class OrderEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private LinkedList<FoodEntity> body;
+    private List<FoodEntity> body = new LinkedList<FoodEntity>();
     private double totalPrice;
     @Enumerated(EnumType.STRING)
     private Status status;
@@ -43,7 +43,7 @@ public class OrderEntity {
         return id;
     }
 
-    public LinkedList<FoodEntity> getBody() {
+    public List<FoodEntity> getBody() {
         return body;
     }
 
