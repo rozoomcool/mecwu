@@ -1,11 +1,14 @@
 package ru.mecwu.core.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import ru.mecwu.core.entity.UserEntity;
 import ru.mecwu.core.exception.UserNotFoundException;
+import ru.mecwu.core.exception.UserAlreadyExistException;
 import ru.mecwu.core.model.User;
 import ru.mecwu.core.repository.UserRepo;
 
+@Service
 public class UserService {
     @Autowired
     private UserRepo userRepo;
@@ -26,5 +29,11 @@ public class UserService {
                 userEntity.getRole(),
                 userEntity.getStatus(),
                 userEntity.getCreatedAt());
+    }
+    public void addUser(UserEntity userEntity) throws UserAlreadyExistException {
+        if(userRepo.findByNickname(userEntity.getNickname()) != null){
+            throw new UserAlreadyExistException("User already exist!");
+        }
+        userRepo.save(userEntity);
     }
 }

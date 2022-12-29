@@ -6,5 +6,6 @@ import ru.mecwu.core.entity.UserEntity;
 
 @Repository
 public interface UserRepo extends CrudRepository<UserEntity, Long> {
-    public UserEntity findByNickname();
+    public UserEntity findByNickname(String nickname);
+    public UserEntity findByEmail(String email);
 }

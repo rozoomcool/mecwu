@@ -12,7 +12,8 @@ public class CafeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
-    private String email, password, description;
+    private String email, password, description, location;
+    private long telephone;
     private Set<Long> menu;
     private Set<Long> grade;
     private Set<Long> foods;
@@ -21,11 +22,12 @@ public class CafeEntity {
     @Temporal(TemporalType.DATE)
     private Date createdAt;
 
-    public CafeEntity(String title, String email, String password, String description, Date createdAt) {
+    public CafeEntity(String title, String email, String password, String description, String location, Date createdAt) {
         this.title = title;
         this.email = email;
         this.password = password;
         this.description = description;
+        this.location = location;
         this.createdAt = createdAt;
     }
 
