@@ -1,6 +1,7 @@
 package ru.mecwu.core.entity;
 
 import jakarta.persistence.*;
+import ru.mecwu.core.model.Role;
 
 import java.util.Date;
 import java.util.HashSet;
@@ -16,6 +17,8 @@ public class CafeEntity {
     private String email, password, description, location;
     private long telephone;
     private int deliveryTime;
+    @Enumerated(EnumType.STRING)
+    private Role role;
     private Set<FoodEntity> menu = new HashSet<FoodEntity>();
     private Set<GradeEntity> grade = new HashSet<GradeEntity>();
     private Set<OrderEntity> orders = new HashSet<OrderEntity>();
@@ -32,6 +35,7 @@ public class CafeEntity {
         this.telephone = telephone;
         this.createdAt = createdAt;
         this.deliveryTime = 60;
+        this.role = Role.Cafe;
     }
 
     public CafeEntity() {
@@ -64,6 +68,22 @@ public class CafeEntity {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public int getDeliveryTime() {
+        return deliveryTime;
+    }
+
+    public void setDeliveryTime(int deliveryTime) {
+        this.deliveryTime = deliveryTime;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     public String getDescription() {

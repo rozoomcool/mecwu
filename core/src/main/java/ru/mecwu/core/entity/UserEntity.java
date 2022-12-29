@@ -1,12 +1,11 @@
 package ru.mecwu.core.entity;
 
 import jakarta.persistence.*;
+import org.springframework.security.core.GrantedAuthority;
 import ru.mecwu.core.model.Role;
 import ru.mecwu.core.model.Status;
 
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name = "user", schema = "mecwudata")
@@ -17,30 +16,32 @@ public class UserEntity {
     private String nickname;
     private String email;
     private String password;
-    @OneToMany (mappedBy="author", fetch=FetchType.EAGER)
-    private Set<CommentEntity> comments = new HashSet<CommentEntity>();
-    private Set<GradeEntity> grades = new HashSet<GradeEntity>();
+    private Set<Long> comments = new HashSet<Long>();
+    private Set<Long> grades = new HashSet<Long>();
     private int points;
     @Enumerated(EnumType.STRING)
     private Role role;
+    private List<GrantedAuthority> authorities;
     @Enumerated(EnumType.STRING)
     private Status status;
     @Temporal(TemporalType.DATE)
     private Date createdAt;
 
-    public UserEntity(String nickname, String email, String password, Set<CommentEntity> comments, Set<GradeEntity> grades, Role role, Status status, Date createdAt) {
+    public UserEntity(String nickname, String email, String password, Role role) {
         this.nickname = nickname;
         this.email = email;
         this.password = password;
-        this.comments = comments;
-        this.grades = grades;
-        this.role = role;
-        this.status = status;
-        this.createdAt = createdAt;
+        this.role = Role.USER;
+        this.authorities.add(Role.USER);
+        this.status = Status.ACTIVE;
+        this.createdAt = new Date();
         this.points = 0;
     }
 
     public UserEntity() {
+    }
+    public void addCommentId(Long commentId){
+        this.comments.add(commentId);
     }
 
     public Long getId() {
@@ -63,6 +64,14 @@ public class UserEntity {
         this.email = email;
     }
 
+    public List<GrantedAuthority> getAuthorities() {
+        return authorities;
+    }
+
+    public void setAuthorities(List<GrantedAuthority> authorities) {
+        this.authorities = authorities;
+    }
+
     public String getPassword() {
         return password;
     }
@@ -79,19 +88,19 @@ public class UserEntity {
         this.points = points;
     }
 
-    public Set<CommentEntity> getComments() {
+    public Set<Long> getComments() {
         return comments;
     }
 
-    public void setComments(Set<CommentEntity> comments) {
+    public void setComments(Set<Long> comments) {
         this.comments = comments;
     }
 
-    public Set<GradeEntity> getGrades() {
+    public Set<Long> getGrades() {
         return grades;
     }
 
-    public void setGrades(Set<GradeEntity> grades) {
+    public void setGrades(Set<Long> grades) {
         this.grades = grades;
     }
 

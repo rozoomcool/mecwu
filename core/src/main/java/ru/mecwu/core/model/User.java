@@ -2,6 +2,7 @@ package ru.mecwu.core.model;
 
 import ru.mecwu.core.entity.CommentEntity;
 import ru.mecwu.core.entity.GradeEntity;
+import ru.mecwu.core.entity.UserEntity;
 
 import java.util.Date;
 import java.util.HashSet;
@@ -11,21 +12,24 @@ public class User {
     private Long id;
     private String nickname;
     private String email;
-    private Set<CommentEntity> comments = new HashSet<CommentEntity>();
-    private Set<GradeEntity> grades = new HashSet<GradeEntity>();
+    private Set<Long> comments = new HashSet<Long>();
+    private Set<Long> grades = new HashSet<Long>();
     private Role role;
     private Status status;
     private Date createdAt;
 
-    public User(Long id, String nickname, String email, Set<CommentEntity> comments, Set<GradeEntity> grades, Role role, Status status, Date createdAt) {
-        this.id = id;
-        this.nickname = nickname;
-        this.email = email;
-        this.comments = comments;
-        this.grades = grades;
-        this.role = role;
-        this.status = status;
-        this.createdAt = createdAt;
+    public User(UserEntity userEntity) {
+        this.id = userEntity.getId();
+        this.nickname = userEntity.getNickname();
+        this.email = userEntity.getEmail();
+        this.comments = userEntity.getComments();
+        this.grades = userEntity.getGrades();
+        this.role = userEntity.getRole();
+        this.status = userEntity.getStatus();
+        this.createdAt = userEntity.getCreatedAt();
+    }
+
+    public User() {
     }
 
     public Long getId() {
@@ -52,19 +56,19 @@ public class User {
         this.email = email;
     }
 
-    public Set<CommentEntity> getComments() {
+    public Set<Long> getComments() {
         return comments;
     }
 
-    public void setComments(Set<CommentEntity> comments) {
+    public void setComments(Set<Long> comments) {
         this.comments = comments;
     }
 
-    public Set<GradeEntity> getGrades() {
+    public Set<Long> getGrades() {
         return grades;
     }
 
-    public void setGrades(Set<GradeEntity> grades) {
+    public void setGrades(Set<Long> grades) {
         this.grades = grades;
     }
 

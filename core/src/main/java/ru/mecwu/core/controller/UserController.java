@@ -3,24 +3,29 @@ package ru.mecwu.core.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import ru.mecwu.core.entity.CommentEntity;
 import ru.mecwu.core.entity.UserEntity;
 import ru.mecwu.core.exception.UserAlreadyExistException;
 import ru.mecwu.core.exception.UserNotFoundException;
+import ru.mecwu.core.service.CommentService;
 import ru.mecwu.core.service.UserService;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/api/user")
 public class UserController {
     @Autowired
     public UserService userService;
-    @GetMapping
-    public ResponseEntity getUsers(){
-        try{
-            return ResponseEntity.ok(userService.getAll());
-        } catch (Exception e){
-            return ResponseEntity.badRequest().body(e.getMessage());
-        }
-    }
+    @Autowired
+    private CommentService commentService;
+
+//    @GetMapping
+//    public ResponseEntity getUsers(){
+//        try{
+//            return ResponseEntity.ok(userService.getAll());
+//        } catch (Exception e){
+//            return ResponseEntity.badRequest().body(e.getMessage());
+//        }
+//    }
     @GetMapping("/{id}")
     public ResponseEntity getOne(@PathVariable Long id){
         try{
@@ -31,24 +36,19 @@ public class UserController {
             return ResponseEntity.badRequest().body("ERROR!!!");
         }
     }
-    @PostMapping("/add")
-    public ResponseEntity addUser(@RequestParam UserEntity userEntity){
+    @GetMapping("/comment")
+    public ResponseEntity getAllUserComments(@RequestParam Long userId){
         try{
-            userService.addUser(userEntity);
-            return ResponseEntity.ok("Registration successful!");
-        }catch(UserAlreadyExistException e){
-            return ResponseEntity.badRequest().body(e.getMessage());
+            return ResponseEntity.ok(commentService.getAllUserComments(userId));
         } catch (Exception e){
             return ResponseEntity.badRequest().body("ERROR!!!");
         }
     }
-    @PostMapping("/add")
-    public ResponseEntity addComment(@RequestParam UserEntity userEntity, @RequestParam Long authorId, @RequestParam Long cafeId){
+    @PostMapping("/comment/add")
+    public ResponseEntity addComment(@RequestParam CommentEntity commentEntity, @RequestParam String author, @RequestParam Long cafeId){
         try{
-            userService.addUser(userEntity);
+            commentService.addComment(commentEntity, author, cafeId);
             return ResponseEntity.ok("Registration successful!");
-        }catch(UserAlreadyExistException e){
-            return ResponseEntity.badRequest().body(e.getMessage());
         } catch (Exception e){
             return ResponseEntity.badRequest().body("ERROR!!!");
         }

@@ -21,16 +21,9 @@ public class UserService {
         if(userEntity == null){
             throw new UserNotFoundException("User not found");
         }
-        return new User(userEntity.getId(),
-                userEntity.getNickname(),
-                userEntity.getEmail(),
-                userEntity.getComments(),
-                userEntity.getGrades(),
-                userEntity.getRole(),
-                userEntity.getStatus(),
-                userEntity.getCreatedAt());
+        return new User(userEntity);
     }
-    public void addUser(UserEntity userEntity) throws UserAlreadyExistException {
+    public void registration(UserEntity userEntity) throws UserAlreadyExistException {
         if(userRepo.findByNickname(userEntity.getNickname()) != null){
             throw new UserAlreadyExistException("User already exist!");
         }
