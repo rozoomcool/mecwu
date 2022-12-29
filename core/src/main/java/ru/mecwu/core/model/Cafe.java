@@ -7,6 +7,7 @@ public class Cafe {
     private Long id;
     private String title;
     private String email, password, description;
+    private long telephone;
     private Set<Long> menu;
     private Set<Long> grade;
     private Set<Long> foods;

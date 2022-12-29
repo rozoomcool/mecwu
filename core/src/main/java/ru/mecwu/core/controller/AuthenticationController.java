@@ -16,6 +16,11 @@ import ru.mecwu.core.model.AuthenticateRequestDTO;
 public class AuthenticationController {
     @PostMapping("login")
     public ResponseEntity authenticate(@RequestBody AuthenticateRequestDTO request){
+        try{
+
+        }catch(Exception e){
+
+        }
         return null;
     }
     @PostMapping("logout")

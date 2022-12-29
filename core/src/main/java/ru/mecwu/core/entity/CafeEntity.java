@@ -19,22 +19,22 @@ public class CafeEntity {
     private int deliveryTime;
     @Enumerated(EnumType.STRING)
     private Role role;
-    private Set<FoodEntity> menu = new HashSet<FoodEntity>();
-    private Set<GradeEntity> grade = new HashSet<GradeEntity>();
-    private Set<OrderEntity> orders = new HashSet<OrderEntity>();
-    private Set<CommentEntity> comments = new HashSet<CommentEntity>();
+    private Set<Long> menu = new HashSet<Long>();
+    private Set<Long> grade = new HashSet<Long>();
+    private Set<Long> orders = new HashSet<Long>();
+    private Set<Long> comments = new HashSet<Long>();
     @Temporal(TemporalType.DATE)
     private Date createdAt;
 
-    public CafeEntity(String title, String email, String password, String description, long telephone, String location, Date createdAt) {
+    public CafeEntity(String title, String email, String password, String description, long telephone, String location) {
         this.title = title;
         this.email = email;
         this.password = password;
         this.description = description;
         this.location = location;
         this.telephone = telephone;
-        this.createdAt = createdAt;
-        this.deliveryTime = 60;
+        this.createdAt = new Date();
+        this.deliveryTime = 45;
         this.role = Role.Cafe;
     }
 
@@ -110,36 +110,28 @@ public class CafeEntity {
         this.telephone = telephone;
     }
 
-    public Set<FoodEntity> getMenu() {
+    public Set<Long> getMenu() {
         return menu;
     }
 
-    public void setMenu(Set<FoodEntity> menu) {
+    public void setMenu(Set<Long> menu) {
         this.menu = menu;
     }
 
-    public Set<GradeEntity> getGrade() {
+    public Set<Long> getGrade() {
         return grade;
     }
 
-    public void setGrade(Set<GradeEntity> grade) {
+    public void setGrade(Set<Long> grade) {
         this.grade = grade;
     }
 
-    public Set<OrderEntity> getOrders() {
+    public Set<Long> getOrders() {
         return orders;
     }
 
-    public void setOrders(Set<OrderEntity> orders) {
+    public void setOrders(Set<Long> orders) {
         this.orders = orders;
-    }
-
-    public Set<CommentEntity> getComments() {
-        return comments;
-    }
-
-    public void setComments(Set<CommentEntity> comments) {
-        this.comments = comments;
     }
 
     public Date getCreatedAt() {
