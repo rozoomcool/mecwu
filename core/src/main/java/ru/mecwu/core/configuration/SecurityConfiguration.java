@@ -30,11 +30,12 @@ public class SecurityConfiguration {
                 .csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
-                .authorizeRequests()
-                .requestMatchers("/mecwu/v1/main").permitAll()
-                .anyRequest()
-                .authenticated()
-                .and()
+                .authorizeRequests(authorizeRequests -> authorizeRequests
+                        .requestMatchers("/mecwu/v1/**").permitAll()
+                        .requestMatchers("/mecwu/v1/cafe/add").permitAll()
+                        .requestMatchers("/mecwu/v1/user/add").permitAll()
+                        .anyRequest().authenticated()
+                )
                 .httpBasic(withDefaults());
         return http.build();
     }
