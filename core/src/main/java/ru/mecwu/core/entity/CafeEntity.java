@@ -19,10 +19,6 @@ public class CafeEntity {
     private int deliveryTime;
     @Enumerated(EnumType.STRING)
     private Role role;
-    private Set<Long> menu = new HashSet<Long>();
-    private Set<Long> grade = new HashSet<Long>();
-    private Set<Long> orders = new HashSet<Long>();
-    private Set<Long> comments = new HashSet<Long>();
     @Temporal(TemporalType.DATE)
     private Date createdAt;
 
@@ -107,30 +103,6 @@ public class CafeEntity {
 
     public void setTelephone(long telephone) {
         this.telephone = telephone;
-    }
-
-    public Set<Long> getMenu() {
-        return menu;
-    }
-
-    public void setMenu(Set<Long> menu) {
-        this.menu = menu;
-    }
-
-    public Set<Long> getGrade() {
-        return grade;
-    }
-
-    public void setGrade(Set<Long> grade) {
-        this.grade = grade;
-    }
-
-    public Set<Long> getOrders() {
-        return orders;
-    }
-
-    public void setOrders(Set<Long> orders) {
-        this.orders = orders;
     }
 
     public Date getCreatedAt() {

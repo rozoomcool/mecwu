@@ -22,8 +22,6 @@ public class User {
         this.id = userEntity.getId();
         this.nickname = userEntity.getNickname();
         this.email = userEntity.getEmail();
-        this.comments = userEntity.getComments();
-        this.grades = userEntity.getGrades();
         this.role = userEntity.getRole();
         this.status = userEntity.getStatus();
         this.createdAt = userEntity.getCreatedAt();

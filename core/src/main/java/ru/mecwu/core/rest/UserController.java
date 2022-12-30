@@ -1,31 +1,29 @@
-package ru.mecwu.core.controller;
+package ru.mecwu.core.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.mecwu.core.entity.CommentEntity;
-import ru.mecwu.core.entity.UserEntity;
-import ru.mecwu.core.exception.UserAlreadyExistException;
 import ru.mecwu.core.exception.UserNotFoundException;
 import ru.mecwu.core.service.CommentService;
 import ru.mecwu.core.service.UserService;
 
 @RestController
-@RequestMapping("/mecwu/v1/user")
+@RequestMapping("user")
 public class UserController {
     @Autowired
     public UserService userService;
     @Autowired
     private CommentService commentService;
 
-//    @GetMapping
-//    public ResponseEntity getUsers(){
-//        try{
-//            return ResponseEntity.ok(userService.getAll());
-//        } catch (Exception e){
-//            return ResponseEntity.badRequest().body(e.getMessage());
-//        }
-//    }
+    @GetMapping
+    public ResponseEntity getUsers(){
+        try{
+            return ResponseEntity.ok(userService.getAll());
+        } catch (Exception e){
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
     @GetMapping("/{id}")
     public ResponseEntity getOne(@PathVariable Long id){
         try{
@@ -37,9 +35,9 @@ public class UserController {
         }
     }
     @GetMapping("/comment")
-    public ResponseEntity getAllUserComments(@RequestParam Long userId){
+    public ResponseEntity getAllUserComments(@RequestParam String author ){
         try{
-            return ResponseEntity.ok(commentService.getAllUserComments(userId));
+            return ResponseEntity.ok(commentService.getAllUserComments(author));
         } catch (Exception e){
             return ResponseEntity.badRequest().body("ERROR!!!");
         }

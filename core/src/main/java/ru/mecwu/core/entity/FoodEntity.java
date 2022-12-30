@@ -16,6 +16,7 @@ public class FoodEntity {
     private String description;
     private Category category;
     private boolean sale;
+    private Long cafeId;
 
     public FoodEntity(String name, double price, String description, Category category, boolean sale) {
         this.name = name;
@@ -34,6 +35,14 @@ public class FoodEntity {
 
     public String getName() {
         return name;
+    }
+
+    public Long getCafeId() {
+        return cafeId;
+    }
+
+    public void setCafeId(Long cafeId) {
+        this.cafeId = cafeId;
     }
 
     public void setName(String name) {

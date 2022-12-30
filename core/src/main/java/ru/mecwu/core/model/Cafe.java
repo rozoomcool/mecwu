@@ -1,35 +1,34 @@
 package ru.mecwu.core.model;
 
+import ru.mecwu.core.entity.CafeEntity;
+
 import java.util.Date;
 import java.util.Set;
 
 public class Cafe {
     private Long id;
     private String title;
-    private String email, password, description;
+    private String email, description, location;
     private long telephone;
-    private Set<Long> menu;
-    private Set<Long> grade;
-    private Set<Long> foods;
-    private Set<Long> orders;
-    private Set<Long> comments;
+    private int deliveryTime;
+    private Role role;
     private Date createdAt;
 
     public Cafe() {
     }
 
-    public Cafe(Long id, String title, String email, String password, String description, Set<Long> menu, Set<Long> grade, Set<Long> foods, Set<Long> orders, Set<Long> comments, Date createdAt) {
-        this.id = id;
-        this.title = title;
-        this.email = email;
-        this.password = password;
-        this.description = description;
-        this.menu = menu;
-        this.grade = grade;
-        this.foods = foods;
-        this.orders = orders;
-        this.comments = comments;
-        this.createdAt = createdAt;
+    public Cafe(CafeEntity cafeEntity) {
+        if(cafeEntity!=null){
+            this.id = cafeEntity.getId();
+            this.title = cafeEntity.getTitle();
+            this.email = cafeEntity.getEmail();
+            this.description = cafeEntity.getDescription();
+            this.createdAt = cafeEntity.getCreatedAt();
+            this.telephone = cafeEntity.getTelephone();
+            this.createdAt = cafeEntity.getCreatedAt();
+            this.deliveryTime = cafeEntity.getDeliveryTime();
+            this.role = cafeEntity.getRole();
+        }
     }
 
     public Long getId() {
@@ -56,60 +55,12 @@ public class Cafe {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public String getDescription() {
         return description;
     }
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public Set<Long> getMenu() {
-        return menu;
-    }
-
-    public void setMenu(Set<Long> menu) {
-        this.menu = menu;
-    }
-
-    public Set<Long> getGrade() {
-        return grade;
-    }
-
-    public void setGrade(Set<Long> grade) {
-        this.grade = grade;
-    }
-
-    public Set<Long> getFoods() {
-        return foods;
-    }
-
-    public void setFoods(Set<Long> foods) {
-        this.foods = foods;
-    }
-
-    public Set<Long> getOrders() {
-        return orders;
-    }
-
-    public void setOrders(Set<Long> orders) {
-        this.orders = orders;
-    }
-
-    public Set<Long> getComments() {
-        return comments;
-    }
-
-    public void setComments(Set<Long> comments) {
-        this.comments = comments;
     }
 
     public Date getCreatedAt() {

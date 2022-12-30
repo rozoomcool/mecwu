@@ -30,12 +30,9 @@ public class CommentService {
     public void addComment(CommentEntity commentEntity, String nickname, Long cafeId) {
         commentEntity.setAuthor(nickname);
         commentEntity.setCafeId(cafeId);
-        UserEntity userEntity = userRepo.findByNickname(nickname).get();
-        userEntity.addCommentId(commentEntity.getId());
         commentRepo.save(commentEntity);
-        userRepo.save(userEntity);
     }
-    public Iterator<CommentEntity> getAllUserComments(Long userId){
-        return (Iterator<CommentEntity>) commentRepo.findAllById(userRepo.findById(userId).get().getComments());
+    public Iterator<CommentEntity> getAllUserComments(String author){
+        return (Iterator<CommentEntity>) commentRepo.findAllByAuthor(author);
     }
 }

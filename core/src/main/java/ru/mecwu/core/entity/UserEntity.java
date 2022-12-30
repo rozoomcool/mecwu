@@ -1,7 +1,6 @@
 package ru.mecwu.core.entity;
 
 import jakarta.persistence.*;
-import org.springframework.security.core.GrantedAuthority;
 import ru.mecwu.core.model.Role;
 import ru.mecwu.core.model.Status;
 
@@ -16,12 +15,10 @@ public class UserEntity {
     private String nickname;
     private String email;
     private String password;
-    private Set<Long> comments = new HashSet<Long>();
-    private Set<Long> grades = new HashSet<Long>();
     private int points;
     @Enumerated(EnumType.STRING)
     private Role role;
-    private List<GrantedAuthority> authorities;
+//    private List<GrantedAuthority> authorities;
     @Enumerated(EnumType.STRING)
     private Status status;
     @Temporal(TemporalType.DATE)
@@ -32,16 +29,13 @@ public class UserEntity {
         this.email = email;
         this.password = password;
         this.role = Role.USER;
-        this.authorities.add(Role.USER);
+//        this.authorities.add(Role.USER);
         this.status = Status.ACTIVE;
         this.createdAt = new Date();
         this.points = 0;
     }
 
     public UserEntity() {
-    }
-    public void addCommentId(Long commentId){
-        this.comments.add(commentId);
     }
 
     public Long getId() {
@@ -64,13 +58,13 @@ public class UserEntity {
         this.email = email;
     }
 
-    public List<GrantedAuthority> getAuthorities() {
-        return authorities;
-    }
-
-    public void setAuthorities(List<GrantedAuthority> authorities) {
-        this.authorities = authorities;
-    }
+//    public List<GrantedAuthority> getAuthorities() {
+//        return authorities;
+//    }
+//
+//    public void setAuthorities(List<GrantedAuthority> authorities) {
+//        this.authorities = authorities;
+//    }
 
     public String getPassword() {
         return password;
@@ -86,22 +80,6 @@ public class UserEntity {
 
     public void setPoints(int points) {
         this.points = points;
-    }
-
-    public Set<Long> getComments() {
-        return comments;
-    }
-
-    public void setComments(Set<Long> comments) {
-        this.comments = comments;
-    }
-
-    public Set<Long> getGrades() {
-        return grades;
-    }
-
-    public void setGrades(Set<Long> grades) {
-        this.grades = grades;
     }
 
     public Role getRole() {
